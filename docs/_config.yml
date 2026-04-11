@@ -1,0 +1,15 @@
+title: Graph Formats
+description: Specifications for graph file formats used by HPC-Heterogeneous-Graph-Algorithms
+remote_theme: just-the-docs/just-the-docs
+url: "https://hpc-heterogeneous-graph-algorithms.github.io/Graph-Formats"
+
+color_scheme: dark
+
+aux_links:
+  "View on GitHub":
+    - "https://github.com/HPC-Heterogeneous-Graph-Algorithms/Graph-Formats"
+aux_links_new_tab: true
+
+footer_content: 'Maintained by <a href="https://github.com/LokeshVenkatachalam">Lokesh Venkatachalam</a>'
+
+nav_enabled: true

@@ -1,0 +1,77 @@
+<script>
+(function(){
+  function ensureThemeToggle() {
+    var button = document.querySelector('.theme-toggle');
+    if (!button) {
+      button = document.createElement('button');
+      button.className = 'theme-toggle';
+      button.type = 'button';
+    }
+
+    var navList = document.querySelector('.aux-nav-list');
+    if (navList) {
+      var item = navList.querySelector('.theme-toggle-item');
+      if (!item) {
+        item = document.createElement('li');
+        item.className = 'aux-nav-list-item theme-toggle-item';
+        navList.appendChild(item);
+      }
+      if (button.parentNode !== item) {
+        item.appendChild(button);
+      }
+    } else if (!button.parentNode) {
+      document.body.appendChild(button);
+    }
+
+    var savedTheme = localStorage.getItem('theme');
+    if (savedTheme !== 'light' && savedTheme !== 'dark') {
+      savedTheme = 'dark';
+      localStorage.setItem('theme', 'dark');
+    }
+    var isLight = savedTheme === 'light';
+    document.body.classList.toggle('light-mode', isLight);
+
+    function updateLabel(lightMode) {
+      var icon = lightMode ? '🌙' : '☀';
+      var label = lightMode ? 'Switch to dark mode' : 'Switch to light mode';
+      button.innerHTML = '<span class="theme-toggle-icon" aria-hidden="true">' + icon + '</span>';
+      button.setAttribute('aria-label', label);
+      button.setAttribute('title', label);
+    }
+
+    updateLabel(isLight);
+
+    button.onclick = function() {
+      document.body.classList.toggle('light-mode');
+      var nextIsLight = document.body.classList.contains('light-mode');
+      localStorage.setItem('theme', nextIsLight ? 'light' : 'dark');
+      updateLabel(nextIsLight);
+    };
+  }
+
+  function ensureMaintainerFooter() {
+    var footer = document.querySelector('.side-bar .site-footer');
+    if (!footer) return;
+    footer.style.setProperty('display', 'block', 'important');
+
+    if (footer.textContent.indexOf('Lokesh Venkatachalam') !== -1) return;
+
+    var maintainer = document.createElement('div');
+    maintainer.className = 'site-footer-maintainer';
+    maintainer.innerHTML = 'Maintained by <a href="https://github.com/LokeshVenkatachalam">Lokesh Venkatachalam</a>';
+    footer.insertBefore(maintainer, footer.firstChild);
+  }
+
+  function initSiteEnhancements() {
+    ensureThemeToggle();
+    ensureMaintainerFooter();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSiteEnhancements);
+  } else {
+    initSiteEnhancements();
+  }
+  window.addEventListener('load', initSiteEnhancements);
+})();
+</script>
