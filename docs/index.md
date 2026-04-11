@@ -12,7 +12,7 @@ Specifications for graph file formats used by [HPC-Heterogeneous-Graph-Algorithm
 {: .fs-5 .fw-300 }
 
 [Graph Format Converters →](https://github.com/HPC-Heterogeneous-Graph-Algorithms/graph-format-converters){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[SCC Analysis →](https://lokeshvenkatachalam.github.io/Strongly-Connected-Components-Analysis/){: .btn .btn-outline .fs-5 .mb-4 .mb-md-0 }
+[Graph Resources →](https://hpc-heterogeneous-graph-algorithms.github.io/Resources/){: .btn .btn-outline .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
@@ -39,4 +39,5 @@ Specifications for graph file formats used by [HPC-Heterogeneous-Graph-Algorithm
 | Project | Description |
 |:--------|:------------|
 | [Graph Format Converters](https://github.com/HPC-Heterogeneous-Graph-Algorithms/graph-format-converters) | Convert BVGraph → MTX / BGR using multi-threaded C++ or Java |
+| [Graph Resources](https://hpc-heterogeneous-graph-algorithms.github.io/Resources/) | Curated graph datasets, tools, and references |
 | [SCC Analysis](https://github.com/LokeshVenkatachalam/Strongly-Connected-Components-Analysis) | Benchmark parallel SCC algorithms on large-scale graphs |
