@@ -279,6 +279,19 @@ reads the complete CSR and can take as long as reading the entire graph.
 
 ---
 
+## Validated PHEM Files
+
+The repository includes
+[`bgr-v2-files.txt`](https://github.com/HPC-Heterogeneous-Graph-Algorithms/Graph-Formats/blob/main/bgr-v2-files.txt),
+a tab-separated manifest of the 16 current PHEM BGR v2 files. It records each
+filename, flag byte, integer widths, weight status, N/M dimensions, and canonical
+source-dataset page.
+
+The listed URLs are provenance/source pages. This repository does not host the
+large preconverted BGR binaries.
+
+---
+
 ## Tools
 
 | Tool | Description |
