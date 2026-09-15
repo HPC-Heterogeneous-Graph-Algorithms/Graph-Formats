@@ -5,6 +5,9 @@ Specifications for graph formats used by
 
 Documentation: <https://hpc-heterogeneous-graph-algorithms.github.io/Graph-Formats/>
 
+Validated PHEM BGR v2 files and source links:
+[`bgr-v2-files.txt`](bgr-v2-files.txt).
+
 ## Check BGR v2 files
 
 The repository includes a Python 3 checker with no third-party dependencies:

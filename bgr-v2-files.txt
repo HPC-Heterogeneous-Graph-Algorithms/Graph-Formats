@@ -1,0 +1,22 @@
+# BGR v2 PHEM dataset manifest
+# Verified against the file headers and exact-size equation on 2026-09-15.
+# URLs are canonical source-dataset pages, not direct preconverted .bgr downloads.
+# Convert source datasets with:
+# https://github.com/HPC-Heterogeneous-Graph-Algorithms/graph-format-converters
+filename	flags	node_bits	offset_bits	weighted	nodes	edges	source_url
+AGATHA_2015.bgr	0x02	32	64	no	183964077	11588725964	https://sparse.tamu.edu/Sybrandt/AGATHA_2015
+GAP-kron.bgr	0x08	32	32	yes	134217726	4223264644	https://sparse.tamu.edu/GAP/GAP-kron
+GAP-urand.bgr	0x08	32	32	yes	134217728	4294966740	https://sparse.tamu.edu/GAP/GAP-urand
+MOLIERE_2016.bgr	0x0a	32	64	yes	30239687	6677301366	https://sparse.tamu.edu/Sybrandt/MOLIERE_2016
+clueweb12.bgr	0x02	32	64	no	978408098	42574107469	https://law.di.unimi.it/webdata/clueweb12/
+com-Friendster.bgr	0x00	32	32	no	65608366	3612134270	https://sparse.tamu.edu/SNAP/com-Friendster
+com-LiveJournal.bgr	0x00	32	32	no	3997962	69362378	https://sparse.tamu.edu/SNAP/com-LiveJournal
+eu-2015.bgr	0x02	32	64	no	1070557254	91792261600	https://law.di.unimi.it/webdata/eu-2015/
+europe_osm.bgr	0x00	32	32	no	50912018	108109320	https://sparse.tamu.edu/DIMACS10/europe_osm
+indochina-2004.bgr	0x00	32	32	no	7414866	194109311	https://law.di.unimi.it/webdata/indochina-2004/
+it-2004.bgr	0x00	32	32	no	41291594	1150725436	https://law.di.unimi.it/webdata/it-2004/
+road_usa.bgr	0x00	32	32	no	23947347	57708624	https://sparse.tamu.edu/DIMACS10/road_usa
+sk-2005.bgr	0x00	32	32	no	50636154	1949412601	https://law.di.unimi.it/webdata/sk-2005/
+twitter7.bgr	0x00	32	32	no	41652230	1468365182	https://sparse.tamu.edu/SNAP/twitter7
+uk-2014.bgr	0x02	32	64	no	787801471	47614527250	https://law.di.unimi.it/webdata/uk-2014/
+webbase-2001.bgr	0x00	32	32	no	118142155	1019903190	https://law.di.unimi.it/webdata/webbase-2001/

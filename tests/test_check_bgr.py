@@ -1,3 +1,4 @@
+import csv
 import importlib.util
 import json
 from pathlib import Path
@@ -10,6 +11,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECKER = ROOT / "tools/check_bgr.py"
+MANIFEST = ROOT / "bgr-v2-files.txt"
 SPEC = importlib.util.spec_from_file_location("check_bgr", CHECKER)
 CHECK_BGR = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = CHECK_BGR
@@ -130,6 +132,33 @@ class BGRCheckerTests(unittest.TestCase):
         self.assertEqual(len(data), 49)
         self.graph.write_bytes(data)
         self.run_checker("--full", self.graph)
+
+    def test_phem_manifest_has_all_valid_variants_and_source_links(self):
+        with MANIFEST.open(newline="") as source:
+            rows = list(csv.DictReader(
+                (line for line in source if not line.startswith("#")),
+                delimiter="\t"))
+        expected = {
+            "AGATHA_2015.bgr", "GAP-kron.bgr", "GAP-urand.bgr",
+            "MOLIERE_2016.bgr", "clueweb12.bgr", "com-Friendster.bgr",
+            "com-LiveJournal.bgr", "eu-2015.bgr", "europe_osm.bgr",
+            "indochina-2004.bgr", "it-2004.bgr", "road_usa.bgr",
+            "sk-2005.bgr", "twitter7.bgr", "uk-2014.bgr",
+            "webbase-2001.bgr",
+        }
+        self.assertEqual({row["filename"] for row in rows}, expected)
+        self.assertEqual(len(rows), len(expected))
+        for row in rows:
+            flags = int(row["flags"], 0)
+            self.assertEqual(int(row["node_bits"]),
+                             64 if flags & CHECK_BGR.NODE_U64 else 32)
+            self.assertEqual(int(row["offset_bits"]),
+                             64 if flags & CHECK_BGR.EDGE_U64 else 32)
+            self.assertEqual(row["weighted"],
+                             "yes" if flags & CHECK_BGR.WEIGHTED else "no")
+            self.assertGreater(int(row["nodes"]), 0)
+            self.assertGreaterEqual(int(row["edges"]), 0)
+            self.assertTrue(row["source_url"].startswith("https://"))
 
 
 if __name__ == "__main__":
