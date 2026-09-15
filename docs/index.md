@@ -13,6 +13,7 @@ Specifications for graph file formats used by [HPC-Heterogeneous-Graph-Algorithm
 
 [Graph Format Converters →](https://github.com/HPC-Heterogeneous-Graph-Algorithms/graph-format-converters){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [Graph Resources →](https://hpc-heterogeneous-graph-algorithms.github.io/Resources/){: .btn .btn-outline .fs-5 .mb-4 .mb-md-0 }
+[BGR Format Checker →](https://github.com/HPC-Heterogeneous-Graph-Algorithms/Graph-Formats/blob/main/tools/check_bgr.py){: .btn .btn-outline .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
@@ -22,7 +23,7 @@ Specifications for graph file formats used by [HPC-Heterogeneous-Graph-Algorithm
 |:-------|:-----|:---------|:--------|:----------|:--------|
 | **BVGraph** | Binary (compressed) | 0-indexed | No | `.graph` + `.properties` + `.offsets` | [Spec →]({{ site.baseurl }}/bvgraph) |
 | **MTX** | Text (Matrix Market) | 1-indexed | Optional | `.mtx` | [Spec →]({{ site.baseurl }}/mtx) |
-| **BGR** | Binary (CSR) | 0-indexed | Optional | `.bgr` | [Spec →]({{ site.baseurl }}/bgr) |
+| **BGR v2** | Binary (CSR) | 0-indexed | Optional float32 | `.bgr` | [Spec →]({{ site.baseurl }}/bgr) |
 | **ECLgraph** | Binary (CSR) | 0-indexed | Optional | `.egr` | [Spec →]({{ site.baseurl }}/ecl) |
 | **WGBin** | Binary (split files) | 0-indexed | No | `_offsets.bin` + `_edges.bin` | [Spec →]({{ site.baseurl }}/wgbin) |
 
@@ -31,6 +32,8 @@ Specifications for graph file formats used by [HPC-Heterogeneous-Graph-Algorithm
 ## Overview
 
 **BVGraph** is the compressed input format from the [LAW dataset collection](https://law.di.unimi.it/datasets.php) (WebGraph framework). It serves as the primary source format for large-scale web and social graphs. **MTX** (Matrix Market) and **BGR** (Binary CSR) are the two primary output formats produced by the [graph-format-converters](https://github.com/HPC-Heterogeneous-Graph-Algorithms/graph-format-converters) tools, supporting both text-based and binary workflows. **ECLgraph** (`.egr`) is a CSR format developed at Texas State University, used in several GPU graph algorithm implementations. **WGBin** is a legacy intermediate format from an earlier conversion pipeline, storing offsets and edges in separate binary files.
+
+The repository's [`check_bgr.py`](https://github.com/HPC-Heterogeneous-Graph-Algorithms/Graph-Formats/blob/main/tools/check_bgr.py) tool validates BGR v2 headers and exact file sizes. Its `--full` mode also streams every CSR row end and destination without loading the whole graph into memory.
 
 ---
 
